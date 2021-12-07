@@ -6,11 +6,14 @@ grid-template-columns: repeat(3, 1fr);
 gap: 2rem;
 margin-top: -10rem;
 
+
 div{
     background: #fff;
     padding: 1.5rem 2rem;
     border-radius: 0.25rem;
     color: #363f5f;
+
+    box-shadow: 2px 2px 20px rgba(0,0,0,0.3);
 
     &.highlight-background{
     background: #33cc95;

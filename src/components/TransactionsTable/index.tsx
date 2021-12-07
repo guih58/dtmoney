@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import { api } from "../../services/api";
+import { useTransactions } from "../../hooks/useTransactions";
 import { Container } from "./styles";
 
+
+
+
 export function TrasactionsTable(){
-useEffect(() => {
-  api.get('transactions')
-  .then(response => console.log(response.data))
-    }, []);
+    const {transactions} = useTransactions();
     return(
        <Container>
            <table>
@@ -20,35 +19,32 @@ useEffect(() => {
                </thead>
 
                <tbody>
-                   <tr>
+                {
+                    transactions.map(transaction => (
+                    <tr key={transaction.id}>
                        <td>
-                           Desenvolvimento de website
+                           {transaction.title}
                        </td>
-                       <td className="deposit">
-                           R$ 12.0000
+                       <td className={transaction.type}>
+                            {new Intl.NumberFormat('pt-BR',{
+                                style: 'currency',
+                                currency: 'BRL'
+
+                            }).format(transaction.amount)}
                        </td>
                        <td>
-                           Desenvolvimento
+                            {transaction.category}
                        </td>
                        <td>
-                           20/02/201
+                       {new Intl.DateTimeFormat('pt-BR').format(
+                         new Date( transaction.createdAt) 
+                           
+                           )}
                        </td>
                    </tr>
-                   <tr>
-                       <td>
-                           Aluguel
-                       </td>
-                       <td className="withdraw">
-                           -R$ 1200
-                       </td>
-                       <td>
-                           Casa
-                       </td>
-                       <td>
-                           21/02/201
-                       </td>
-                   </tr>
-                   
+                    ))
+                }           
+        
                </tbody>
            </table>
        </Container>
