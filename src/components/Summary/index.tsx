@@ -2,7 +2,6 @@ import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
 import totalImg from '../../assets/total.svg'
 import { Conatiner } from "./styles";
-import {useContext} from 'react'
 import { useTransactions } from '../../hooks/useTransactions';
 
 
@@ -13,7 +12,7 @@ export function Summary(){
         if(transaction.type === 'deposit'){
             return acc + transaction.amount;
         }
-
+        console.log(totalDeposits)
         return acc;
     }, 0)
 

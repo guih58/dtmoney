@@ -1,4 +1,4 @@
-import {FormEvent, useState , useContext} from "react"
+import {FormEvent, useState} from "react"
 import Modal from "react-modal"
 import { Container , TransactionTypeContainer , RadioBox} from "./styles"
 import closeImg from '../../assets/close.svg'
@@ -52,7 +52,7 @@ export function NewTransactionModal({isOpen , onRequestClose}:NewTransactionModa
         className="react-modal-content"
         
         >
-            <button type="button" onClick={onRequestClose} className="react-modal-close"><img src={closeImg}/></button>
+            <button type="button" onClick={onRequestClose} className="react-modal-close"><img src={closeImg} alt="Fechar"/></button>
 
             <Container onSubmit={handleCreateNewTransaction}>
           <h2>Cadastrar transação</h2>
@@ -73,7 +73,7 @@ export function NewTransactionModal({isOpen , onRequestClose}:NewTransactionModa
               <RadioBox
               type="button"
               onClick={()=>{setType('deposit')}}
-              isActive={type =='deposit'}
+              isActive={type ==='deposit'}
               activeColor="green"
               
               >
@@ -85,7 +85,7 @@ export function NewTransactionModal({isOpen , onRequestClose}:NewTransactionModa
               <RadioBox
               type="button"
               onClick={()=>{setType('withdraw')}}
-              isActive={type =='withdraw'}
+              isActive={type ==='withdraw'}
               activeColor="red"
               >
                   <img src={outcomeImg} alt="Saida" />
